@@ -1,7 +1,7 @@
 /**
- * UserController
+ * OpportunitiesController
  *
- * @description :: Server-side logic for managing users
+ * @description :: Server-side logic for managing opportunities
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
@@ -13,16 +13,16 @@ var Doit = rest.service(function(u, p) {
 }, {
   baseURL: 'http://localdocker:5000'
 }, {
-  update: function(user) {
-    return this.put('/', user);
+  update: function(opportunity) {
+    return this.put('/', opportunity);
   }
 });
 
 module.exports = {
   find: function (req, res) {
     var doit = new Doit('danwrong', 'password');;
-    doit.get('/v1/users').on('complete', function (response) {
-      res.send(response);
+    doit.get('/v1/opportunities').on('complete', function (response) {
+      res.send(response.data.items);
     });
   }
 };
