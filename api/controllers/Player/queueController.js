@@ -20,9 +20,8 @@ var FM = rest.service(function(u, p) {
 
 module.exports = {
   find: function (req, res) {
-    // console.log(req);
     var fm = new FM('', '');
-    fm.get('/player/queue').on('complete', function (response) {
+    fm.get(req.url).on('complete', function (response) {
       res.send(response);
     });
   }
