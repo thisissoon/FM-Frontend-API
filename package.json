@@ -1,6 +1,6 @@
 {
-  "name": "jsonapi",
-  "private": true,
+  "name": "FM-Frontend-API",
+  "private": false,
   "version": "0.0.0",
   "description": "a Sails application",
   "keywords": [],
@@ -31,8 +31,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ed/jsonapi.git"
+    "url": "git://github.com/thisissoon/FM-Frontend-API.git"
   },
-  "author": "ed",
+  "author": "SOON_",
   "license": ""
 }
