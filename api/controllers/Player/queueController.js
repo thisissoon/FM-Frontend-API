@@ -1,7 +1,7 @@
 /**
- * QueueController
+ * Player/queueController
  *
- * @description :: Server-side logic for managing queues
+ * @description :: Server-side logic for managing player/queues
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
@@ -20,6 +20,7 @@ var FM = rest.service(function(u, p) {
 
 module.exports = {
   find: function (req, res) {
+    // console.log(req);
     var fm = new FM('', '');
     fm.get('/player/queue').on('complete', function (response) {
       res.send(response);

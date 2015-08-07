@@ -34,7 +34,8 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  'GET /player/queue': 'Player/queueController.find'
 
   /***************************************************************************
   *                                                                          *
