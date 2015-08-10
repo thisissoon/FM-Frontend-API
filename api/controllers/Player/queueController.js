@@ -7,43 +7,52 @@
 
 var rest = require('restler');
 
-var FM = rest.service(function(u, p) {
-  this.defaults.username = u;
-  this.defaults.password = p;
-}, {
-  baseURL: 'http://localdocker:5000'
-}, {
-  update: function(track) {
-    return this.put('/player/queue', track);
-  }
-});
+var FM = rest.service(function(){}, { baseURL: 'http://localdocker:5000' });
 
 var get = function(req, res) {
-  var fm = new FM('', '');
-  fm.get(req.url).on('complete', function (response) {
-    res.send(response);
+  var fm = new FM();
+
+  fm.get(req.url, {
+    headers: req.headers
+  })
+  .on('complete', function (data, response) {
+    res.status(response.headers.status);
+    res.send(data);
   });
 }
 
 var post = function(req, res) {
-  var fm = new FM('', '');
-  fm.post(req.url).on('complete', function (response) {
-    res.send(response);
+  var fm = new FM();
+
+  fm.post(req.url, {
+    data: JSON.stringify(req.body),
+    headers: req.headers
+  })
+  .on('complete', function (data, response) {
+    res.status(response.headers.status);
+    res.send(data);
   });
 }
 
 var update = function(req, res) {
-  var fm = new FM('', '');
-  fm.update(req.url).on('complete', function (response) {
-    res.send(response);
+  var fm = new FM();
+  fm.post(req.url, {
+    data: JSON.stringify(req.body),
+    headers: req.headers
+  })
+  .on('complete', function (data, response) {
+    res.status(response.headers.status);
+    res.send(data);
   });
 }
 
 var del = function(req, res) {
-  var fm = new FM('', '');
-  fm.del(req.url).on('complete', function (response) {
-    res.send(response);
-  });
+  var fm = new FM();
+  fm.del(req.url)
+    .on('complete', function (data, response) {
+      res.status(response.headers.status);
+      res.send(data);
+    });
 }
 
 module.exports = {
