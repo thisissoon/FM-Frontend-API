@@ -10,16 +10,8 @@ var rest = require('restler');
  * @description :: Service for communicating with FM API
  */
 
-
-var FM = rest.service(function(u, p) {
-  this.defaults.username = u;
-  this.defaults.password = p;
-}, {
+var FM = rest.service(function(){}, {
   baseURL: 'http://localdocker:5000'
-}, {
-  update: function(track) {
-    return this.put('/player/queue', track);
-  }
 });
 
-module.exports = new fmAPI('', '');
+module.exports = new FM();

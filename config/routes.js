@@ -35,7 +35,12 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'GET /player/queue*': { blueprint: 'find', model: 'queue' }
+
+  'GET /player/queue/:id*': 'Player/queueController.findOne',
+  'GET /player/queue*': { blueprint: 'find', model: 'queue' },
+  'POST /player/queue*': 'Player/queueController.create',
+  'PUT /player/queue*': 'Player/queueController.update',
+  'DELETE /player/queue*': 'Player/queueController.destroy'
 
   /***************************************************************************
   *                                                                          *
