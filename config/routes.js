@@ -35,7 +35,7 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'GET /player/queue*': 'Player/queueController.find'
+  'GET /player/queue*': { blueprint: 'find', model: 'queue' }
 
   /***************************************************************************
   *                                                                          *
