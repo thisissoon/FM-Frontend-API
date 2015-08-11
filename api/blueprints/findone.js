@@ -8,7 +8,7 @@ var localFindOne = require('sails/lib/hooks/blueprints/actions/findOne');
  *
  * get /:modelIdentity/:id
  *
- * An API call to find and return a single model instance from the FM API
+ * An API call to find and return a single model instance from an external REST service
  * using the specified id. In development, the local sails model will be queried instead.
  *
  * Required:
@@ -27,8 +27,10 @@ module.exports = function findOneRecord (req, res) {
 
   } else {
 
-    // Query FM API
-    fmAPI.get(req.url, {
+    var Service = actionUtil.parseService(req);
+
+    // Query external REST service
+    Service.get(req.url, {
       headers: req.headers
     })
     .on('complete', function (data, response) {

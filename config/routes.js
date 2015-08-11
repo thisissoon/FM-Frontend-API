@@ -41,11 +41,11 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'GET /player/queue': { blueprint: 'find', model: 'queue' },
-  'POST /player/queue': { blueprint: 'create', model: 'queue' },
-  'GET /player/queue/:id': { blueprint: 'findone', model: 'queue' },
-  'PUT /player/queue/:id': { blueprint: 'update', model: 'queue' },
-  'DELETE /player/queue/:id': { blueprint: 'destroy', model: 'queue' }
+  'GET /player/queue': { blueprint: 'find', model: 'queue', service: 'fmapi' },
+  'POST /player/queue': { blueprint: 'create', model: 'queue', service: 'fmapi' },
+  'GET /player/queue/:id': { blueprint: 'findone', model: 'queue', service: 'fmapi' },
+  'PUT /player/queue/:id': { blueprint: 'update', model: 'queue', service: 'fmapi' },
+  'DELETE /player/queue/:id': { blueprint: 'destroy', model: 'queue', service: 'fmapi' }
 
   /***************************************************************************
   *                                                                          *

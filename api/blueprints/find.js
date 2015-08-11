@@ -4,12 +4,12 @@
 var localFind = require('sails/lib/hooks/blueprints/actions/find');
 
 /**
- * Find Records no FM API
+ * Find Records on external REST service
  *
  *  get   /:modelIdentity
  *   *    /:modelIdentity/find
  *
- * An API call to find and return model instances from the FM API.
+ * An API call to find and return model instances from an external REST service.
  * In development, the local sails model will be queried instead.
  *
  */
@@ -23,8 +23,10 @@ module.exports = function findRecords (req, res) {
 
   } else {
 
-    // Query FM API
-    fmAPI.get(req.url, {
+    var Service = actionUtil.parseService(req);
+
+    // Query external REST service
+    Service.get(req.url, {
       headers: req.headers
     })
     .on('complete', function (data, response) {

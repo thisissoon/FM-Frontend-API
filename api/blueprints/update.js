@@ -5,7 +5,7 @@
 var localUpdate = require('sails/lib/hooks/blueprints/actions/update');
 
 /**
- * Update One Record from FM API
+ * Update One Record on external REST service
  *
  * An API call to update a model instance with the specified `id`.
  * In development, the local sails model will be updated instead.
@@ -23,8 +23,10 @@ module.exports = function updateOneRecord (req, res) {
 
   } else {
 
-    // Update record on FM API
-    fmAPI.post(req.url, {
+    var Service = actionUtil.parseService(req);
+
+    // Update record on external REST service
+    Service.post(req.url, {
       data: JSON.stringify(req.body),
       headers: req.headers
     })

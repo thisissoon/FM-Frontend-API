@@ -4,12 +4,12 @@
 var localDestroy = require('sails/lib/hooks/blueprints/actions/destroy');
 
 /**
- * Destroy One Record on FM API
+ * Destroy One Record on external REST service
  *
  * delete  /:modelIdentity/:id
  *    *    /:modelIdentity/destroy/:id
  *
- * Destroys the single model instance with the specified `id` from the FM API.
+ * Destroys the single model instance with the specified `id` from an external REST service.
  * In development, the local sails model will be destroyed instead.
  *
  * Required:
@@ -24,8 +24,10 @@ module.exports = function destroyOneRecord (req, res) {
 
   } else {
 
-    // Destroy record on FM API
-    fmAPI.del(req.url)
+    var Service = actionUtil.parseService(req);
+
+    // Destroy record on external REST service
+    Service.del(req.url)
       .on('complete', function (data, response) {
         res.status(response.headers.status);
         res.send(data);

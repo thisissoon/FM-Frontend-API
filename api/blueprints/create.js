@@ -4,11 +4,11 @@
 var localCreate = require('sails/lib/hooks/blueprints/actions/create');
 
 /**
- * Create Record on FM API
+ * Create Record on external REST service
  *
  * post /:modelIdentity
  *
- * An API call to find and return a single model instance from the FM API
+ * An API call to find and return a single model instance from an external REST service
  * using the specified criteria. In development, a local sails model will be created instead.
  *
  * Optional:
@@ -24,8 +24,10 @@ module.exports = function createRecord (req, res) {
 
   } else {
 
-    // Create record on FM API
-    fmAPI.post(req.url, {
+    var Service = actionUtil.parseService(req);
+
+    // Create record on external REST service
+    Service.post(req.url, {
       data: JSON.stringify(req.body),
       headers: req.headers
     })
