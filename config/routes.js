@@ -32,10 +32,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
-
   'GET /player/queue/:id*': 'Player/queueController.findOne',
   'GET /player/queue*': 'Player/queueController.find',
   'POST /player/queue*': 'Player/queueController.create',
