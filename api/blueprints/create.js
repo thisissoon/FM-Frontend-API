@@ -27,7 +27,7 @@ module.exports = function createRecord (req, res) {
     var Service = actionUtil.parseService(req);
 
     // Create record on external REST service
-    Service.post(req.url, {
+    Service.post(req.url.replace(/\/api\//, "/"), {
       data: JSON.stringify(req.body),
       headers: req.headers
     })

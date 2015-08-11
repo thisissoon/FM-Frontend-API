@@ -30,7 +30,7 @@ module.exports = function findOneRecord (req, res) {
     var Service = actionUtil.parseService(req);
 
     // Query external REST service
-    Service.get(req.url, {
+    Service.get(req.url.replace(/\/api\//, "/"), {
       headers: req.headers
     })
     .on('complete', function (data, response) {

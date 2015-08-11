@@ -26,7 +26,7 @@ module.exports = function updateOneRecord (req, res) {
     var Service = actionUtil.parseService(req);
 
     // Update record on external REST service
-    Service.post(req.url, {
+    Service.post(req.url.replace(/\/api\//, "/"), {
       data: JSON.stringify(req.body),
       headers: req.headers
     })

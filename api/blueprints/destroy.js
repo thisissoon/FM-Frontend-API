@@ -27,7 +27,7 @@ module.exports = function destroyOneRecord (req, res) {
     var Service = actionUtil.parseService(req);
 
     // Destroy record on external REST service
-    Service.del(req.url)
+    Service.del(req.url.replace(/\/api\//, "/"))
       .on('complete', function (data, response) {
         res.status(response.headers.status);
         res.send(data);
