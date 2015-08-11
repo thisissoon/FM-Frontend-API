@@ -32,11 +32,16 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /player/queue/:id*': 'Player/queueController.findOne',
-  'GET /player/queue*': 'Player/queueController.find',
-  'POST /player/queue*': 'Player/queueController.create',
-  'PUT /player/queue*': 'Player/queueController.update',
-  'DELETE /player/queue*': 'Player/queueController.destroy'
+  '/*': function log (req, res, next) {
+    sails.log.info(new Date(), req.method, req.url);
+    next();
+  },
+
+  'GET /player/queue': { blueprint: 'find', model: 'queue', service: 'fmapi' },
+  'POST /player/queue': { blueprint: 'create', model: 'queue', service: 'fmapi' },
+  'GET /player/queue/:id': { blueprint: 'findone', model: 'queue', service: 'fmapi' },
+  'PUT /player/queue/:id': { blueprint: 'update', model: 'queue', service: 'fmapi' },
+  'DELETE /player/queue/:id': { blueprint: 'destroy', model: 'queue', service: 'fmapi' }
 
   /***************************************************************************
   *                                                                          *
