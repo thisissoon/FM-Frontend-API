@@ -32,6 +32,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  '/*': function log (req, res, next) {
+    sails.log.info(new Date(), req.method, req.url);
+    next();
+  },
+
   '/': {
     view: 'homepage'
   },
