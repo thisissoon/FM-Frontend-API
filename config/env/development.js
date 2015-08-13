@@ -21,4 +21,14 @@ module.exports = {
   //   connection: 'someMongodbServer'
   // }
 
+  connections: {
+    /**
+     * Use local DB for FM API in development environment
+     * (see config/connections.js)
+     */
+    fmApi: {
+      adapter: 'sails-disk'
+    }
+  }
+
 };

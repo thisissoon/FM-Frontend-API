@@ -7,7 +7,24 @@
 
 module.exports = {
 
+  connection: 'fmApi',
+
+  url: '/player/queue',
+
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
+  autoPK: false,
+
   attributes: {
+
+    id: {
+      type: 'string'
+    },
+
+    uri: {
+      type: 'string',
+      required: true
+    }
 
   }
 };

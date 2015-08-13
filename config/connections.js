@@ -32,6 +32,14 @@ module.exports.connections = {
     adapter: 'sails-disk'
   },
 
+  fmApi: {
+    adapter: 'waterline-fmapi',
+    host: 'localdocker',
+    protocol: 'http',
+    port: 5000,
+    headers: {}
+  },
+
   /***************************************************************************
   *                                                                          *
   * MySQL is the world's most popular relational database.                   *
