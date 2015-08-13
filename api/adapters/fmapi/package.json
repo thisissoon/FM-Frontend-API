@@ -1,0 +1,34 @@
+{
+  "name": "waterline-fmapi",
+  "version": "0.10.0",
+  "description": "fmapi adapter for Sails / Waterline",
+  "main": "adapter.js",
+  "scripts": {
+    "test": "node test/integration/runner -R spec -b"
+  },
+  "repository": {"type":"git","url":"git://github.com/thisissoon/fm-frontend-api.git"},
+  "keywords": [
+    "fmapi",
+    "adapter",
+    "sails",
+    "waterline",
+    "sails.js",
+    "plugin"
+  ],
+  "author": "SOON_",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {},
+  "devDependencies": {
+    "waterline-adapter-tests": "~0.10.0",
+    "mocha": "*",
+    "captains-log": "~0.11.0"
+  },
+  "waterlineAdapter": {
+    "type": "fmapi",
+    "interfaces": [
+      "semantic"
+    ],
+    "waterlineVersion": "~0.10.0"
+  }
+}
