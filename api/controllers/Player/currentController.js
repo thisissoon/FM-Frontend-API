@@ -1,7 +1,7 @@
 /**
- * Player/queueController
+ * Player/currentController
  *
- * @description :: Server-side logic for managing player/queues
+ * @description :: Server-side logic for managing player/currents
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
