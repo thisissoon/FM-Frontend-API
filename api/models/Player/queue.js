@@ -7,6 +7,13 @@
 
 module.exports = {
 
+  // required for blueprint routes to work with nested directory structure
+  identity: 'player/queue',
+
+  autoPk: false,
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
+
   attributes: {
 
   }
