@@ -12,17 +12,18 @@
 
 module.exports = {
 
-  /***************************************************************************
-   * Set the default database connection for models in the development       *
-   * environment (see config/connections.js and config/models.js )           *
-   ***************************************************************************/
+  connections: {
 
-  // models: {
-  //   connection: 'someMongodbServer'
-  // }
+    // Use the local disk development DB instead of API
+    fm: {
+      adapter: 'sails-disk'
+    },
 
-  fm: {
-    adapter: 'sails-disk'
+    // Disbale redis events
+    fmEvents: {
+      host: ''
+    }
+
   }
 
 };
