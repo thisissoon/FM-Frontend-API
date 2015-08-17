@@ -39,6 +39,15 @@ module.exports.connections = {
     pathname: ''
   },
 
+  /**
+   * Redis PubSub server for FM service events
+   * (no adpater required as its only used for events not storage)
+   */
+  fmEvents: {
+    host: process.env.REDIS_URI || 'redis://redis:6379',
+    channel: process.env.REDIS_CHANNEL || 'fm:events'
+  },
+
   /***************************************************************************
   *                                                                          *
   * MySQL is the world's most popular relational database.                   *
