@@ -21,4 +21,8 @@ module.exports = {
   //   connection: 'someMongodbServer'
   // }
 
+  fm: {
+    adapter: 'sails-disk'
+  }
+
 };

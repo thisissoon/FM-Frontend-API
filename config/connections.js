@@ -32,6 +32,13 @@ module.exports.connections = {
     adapter: 'sails-disk'
   },
 
+  fm: {
+    adapter: 'sails-rest',
+    host:     'localdocker:5000',
+    protocol: 'http',
+    pathname: ''
+  },
+
   /***************************************************************************
   *                                                                          *
   * MySQL is the world's most popular relational database.                   *
