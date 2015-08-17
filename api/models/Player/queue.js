@@ -16,6 +16,11 @@ module.exports = {
 
   attributes: {
 
+    uri: {
+      type: 'string',
+      primaryKey: true
+    }
+
   }
 };
 
