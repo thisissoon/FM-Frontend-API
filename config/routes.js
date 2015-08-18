@@ -37,10 +37,6 @@ module.exports.routes = {
     next();
   },
 
-  '/': {
-    view: 'homepage'
-  },
-
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
@@ -50,5 +46,11 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+  'GET /api/player/current':    { model: 'player/current',    blueprint: 'findasobject' },
+  'GET /api/player/mute':       { model: 'player/mute',       blueprint: 'findasobject' },
+  'GET /api/player/volume':     { model: 'player/volume',     blueprint: 'findasobject' },
+  'GET /api/player/queue/meta': { model: 'player/queue/meta', blueprint: 'findasobject' }
+
 
 };
