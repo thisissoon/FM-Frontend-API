@@ -47,4 +47,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'GET /api/player/current': { model: 'player/current', blueprint: 'findone' }
+
+
 };
