@@ -4,12 +4,16 @@
 
 module.exports = {
 
-  fm: {
-    host: 'localdocker:5000'
-  },
+  connections: {
 
-  fmEvents: {
-    host: 'redis://localdocker:6379'
+    fm: {
+      host: 'localdocker:5000'
+    },
+
+    fmEvents: {
+      host: 'redis://localdocker:6379'
+    }
+
   }
 
 };
