@@ -47,7 +47,10 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /api/player/current': { model: 'player/current', blueprint: 'findone' }
+  'GET /api/player/current':    { model: 'player/current',    blueprint: 'findone' },
+  'GET /api/player/mute':       { model: 'player/mute',       blueprint: 'findone' },
+  'GET /api/player/volume':     { model: 'player/volume',     blueprint: 'findone' },
+  'GET /api/player/queue/meta': { model: 'player/queue/meta', blueprint: 'findone' }
 
 
 };
