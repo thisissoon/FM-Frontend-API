@@ -34,9 +34,8 @@ module.exports.connections = {
 
   fm: {
     adapter: 'sails-rest',
-    host:     'localdocker:5000',
-    protocol: 'http',
-    pathname: ''
+    host: process.env.FM_API_URI,
+    protocol: 'http'
   },
 
   /**

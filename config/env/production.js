@@ -12,6 +12,13 @@
 
 module.exports = {
 
+  connections: {
+    fm: {
+      host: process.env.FM_API_URI || 'api.thisissoon.fm',
+      protocol: 'https'
+    }
+  }
+
   /***************************************************************************
    * Set the default database connection for models in the production        *
    * environment (see config/connections.js and config/models.js )           *
