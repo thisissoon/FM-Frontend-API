@@ -21,7 +21,9 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
-  // middleware: {
+  middleware: {
+
+    prerender: require('prerender-node').set('prerenderToken', '9RffqfgWvLo1fAbwySEQ'),
 
   /***************************************************************************
   *                                                                          *
@@ -54,11 +56,10 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
-    // myRequestLogger: function (req, res, next) {
-    //     console.log("Requested :: ", req.method, req.url);
-    //     return next();
-    // }
-
+    myRequestLogger: function (req, res, next) {
+      sails.log.info(new Date(), req.method, req.url);
+      next();
+    },
 
   /***************************************************************************
   *                                                                          *
@@ -71,7 +72,7 @@ module.exports.http = {
 
     // bodyParser: require('skipper')
 
-  // },
+  },
 
   /***************************************************************************
   *                                                                          *
