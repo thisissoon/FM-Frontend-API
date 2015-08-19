@@ -15,7 +15,7 @@ module.exports = function(req, res, next) {
       },
       fileName = 'index.html';
 
-  // Fast check for api requests
+  // Fast check for api and assets requests
   if (ASSET_REGEX.test(req.path)) return next();
   if (API_REGEX.test(req.path)) return next();
 

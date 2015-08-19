@@ -23,8 +23,6 @@ module.exports.http = {
 
   middleware: {
 
-    prerender: require('prerender-node').set('prerenderToken', '9RffqfgWvLo1fAbwySEQ'),
-
   /***************************************************************************
   *                                                                          *
   * The order in which middleware should be run for HTTP request. (the Sails *
