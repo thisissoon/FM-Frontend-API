@@ -32,7 +32,12 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/*': { policy: 'angularRouting', skipAssets: true },
+  '/*': {
+    controller: 'AppController',
+    action: 'index',
+    skipAssets: true,
+    skipRegex: /^\/api\/.*$/
+  },
 
   /***************************************************************************
   *                                                                          *
