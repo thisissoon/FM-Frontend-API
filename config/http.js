@@ -23,7 +23,7 @@ module.exports.http = {
 
   middleware: {
 
-    prerender: require('prerender-node').set('prerenderToken', '9RffqfgWvLo1fAbwySEQ'),
+    prerender: require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN),
 
   /***************************************************************************
   *                                                                          *
