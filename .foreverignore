@@ -1,0 +1,5 @@
+.git/
+.tmp/
+node_modules/
+views/
+assets/
