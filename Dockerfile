@@ -3,16 +3,20 @@
 # Builds a docker image to run the FM frontend services
 #
 
-FROM node:slim
+FROM mhart/alpine-node:latest
 
-RUN apt-get update -y && apt-get install --no-install-recommends -y -q curl python build-essential git ca-certificates
+RUN apk update && apk add \
+    make gcc g++ python git && \
+    rm -rf /var/cache/apk/*
 
 # Install global npm dependencies
 RUN npm install -g \
-    sails \
     forever \
     grunt-cli \
     bower
+
+# Ensure a SOON user exists
+RUN adduser SOON -D
 
 # Install API dependencies
 WORKDIR /app
@@ -34,6 +38,11 @@ RUN mkdir -p /app/.tmp/public && \
     rm -rf `find . -type f | grep -v '.*\/dist\/.*'`
 
 WORKDIR /app
+
+# Cleanup
+RUN npm uninstall -g bower && \
+    npm cache clean && \
+    apk del make gcc g++ python git
 
 EXPOSE  1337
 CMD ["npm", "start"]
