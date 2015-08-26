@@ -29,7 +29,7 @@ RUN npm install && \
     grunt build --env frontend-api
 
 # Copy FE build to public directory
-RUN mkdir /app/.tmp/public && \
+RUN mkdir -p /app/.tmp/public && \
     cp -r dist/* /app/.tmp/public/ && \
     rm -rf `find . -type f | grep -v '.*\/dist\/.*'`
 
