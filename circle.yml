@@ -11,6 +11,13 @@ machine:
     REPO: registry.soon.build/fm/febe
     TAG: $(sed 's/master/latest/;s/\//\-/' <<<$CIRCLE_BRANCH)
 
+# Sync FE submodule
+
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init
+
 # Dependencies
 
 dependencies:
