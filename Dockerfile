@@ -39,10 +39,5 @@ RUN mkdir -p /app/.tmp/public && \
 
 WORKDIR /app
 
-# Cleanup
-RUN npm uninstall -g bower && \
-    npm cache clean && \
-    apk del make gcc g++ python git
-
 EXPOSE  1337
 CMD ["npm", "start"]
