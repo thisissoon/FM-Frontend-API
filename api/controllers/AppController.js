@@ -14,7 +14,7 @@ module.exports = {
    */
   index: function (req, res) {
     var options = {
-          root: __dirname + '../../../.tmp/public/'
+          root: process.cwd() + '/.tmp/public/'
         },
         fileName = 'index.html';
 

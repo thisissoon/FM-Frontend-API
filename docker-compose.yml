@@ -1,11 +1,10 @@
 feapi:
   image:  soon/fm-frontend-api:fe
-  command: forever app.js
+  command: forever -w app.js
 #  volumes:
 #    - ./api:/app/api
 #    - ./assets:/app/assets
 #    - ./config:/app/config
-#    - ./tasks:/app/tasks
 #    - ./views:/app/views
   ports:
     - 1337:1337
@@ -13,7 +12,7 @@ feapi:
     - redis
     - api
   environment:
-    - NODE_ENV=dockercompose
+    - NODE_ENV=compose
     - FM_API_URI=api:5000
     - REDIS_URI=redis://redis:6379
     - REDIS_CHANNEL=fm:events

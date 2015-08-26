@@ -17,20 +17,21 @@ RUN npm install -g \
 # Install API dependencies
 WORKDIR /app
 ADD package.json /app/package.json
-RUN npm install
+RUN npm install --production
 
 # Bundle API source
 ADD . /app
 
-# Install FE packages
+# Install FE
 WORKDIR /app/assets
 RUN npm install && \
     bower install --allow-root && \
     grunt build --env frontend-api
 
-# Copy FE source to serve directory
-RUN mv dist /app/.tmp/public && \
-    rm -rf /app/assets
+# Copy FE build to public directory
+RUN mkdir /app/.tmp/public && \
+    cp -r dist/* /app/.tmp/public/ && \
+    rm -rf `find . -type f | grep -v '.*\/dist\/.*'`
 
 WORKDIR /app
 
