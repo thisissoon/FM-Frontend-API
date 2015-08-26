@@ -29,7 +29,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "forever app.js --prod"
+    "start": "forever --minUptime 1000 --spinSleepTime 1000 app.js --prod"
   },
   "main": "app.js",
   "repository": {
