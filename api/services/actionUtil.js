@@ -1,10 +1,10 @@
+'use strict';
 /**
  * Module dependencies
  * @external
  */
 var _ = require('lodash'),
-    _super = require('sails/lib/hooks/blueprints/actionUtil'),
-    util = require('util');
+    _super = require('sails/lib/hooks/blueprints/actionUtil');
 
 /**
  * Extend sails actionUtil with custom methods

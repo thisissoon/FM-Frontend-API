@@ -1,3 +1,4 @@
+'use strict';
 /**
  * Player/volumeController
  *
@@ -6,6 +7,6 @@
  */
 
 module.exports = {
-	
+
 };
 

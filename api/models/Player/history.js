@@ -1,3 +1,4 @@
+'use strict';
 /**
 * Player/history.js
 *
