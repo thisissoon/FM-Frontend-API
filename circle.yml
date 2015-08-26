@@ -1,0 +1,40 @@
+#
+# CircleCI Configuration
+#
+
+# Machine Settings
+
+machine:
+  services:
+    - docker
+  environment:
+    REPO: registry.soon.build/fm/febe
+    TAG: $(sed 's/master/latest/;s/\//\-/' <<<$CIRCLE_BRANCH)
+
+# Dependencies
+
+dependencies:
+  pre:
+    - sed "s/<DOCKER_REGISTRY>/$DOCKER_REGISTRY/;s/<DOCKER_AUTH>/$DOCKER_AUTH/" < .docker.config.json > ~/.dockercfg
+  override:
+    - docker build -t $REPO:$TAG .
+
+# Deployment
+
+deployment:
+  prod:
+    branch: master
+    commands:
+      - docker tag $REPO:$TAG $REPO:prod
+      - docker push $REPO:prod
+  qa:
+    branch: /release\/.*/
+    commands:
+      - docker tag $REPO:$TAG $REPO:qa
+      - docker push $REPO:qa
+  latest:
+    branch: develop
+    commands:
+      - docker tag $REPO:$TAG $REPO:latest
+      - docker push $REPO:latest
+

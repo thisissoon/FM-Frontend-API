@@ -1,5 +1,5 @@
-feapi:
-  image:  soon/fm-frontend-api:fe
+febe:
+  image:  registry.soon.build/fm/febe
   command: forever -w app.js
 #  volumes:
 #    - ./api:/app/api
