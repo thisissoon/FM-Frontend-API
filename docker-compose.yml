@@ -1,5 +1,5 @@
 febe:
-  image:  registry.soon.build/fm/febe
+  image:  registry.soon.build/fm/febe:with-fe
   command: forever -w app.js
 #  volumes:
 #    - ./api:/app/api
