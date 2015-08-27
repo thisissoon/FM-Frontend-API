@@ -1,6 +1,6 @@
 # FM Frontend API
 
-The FM Frontend API provides services API and Socket services for the FM frontend and also serves the frontend application. It uses the [Sails](http://sailsjs.org) framework.
+The FM Frontend API provides API and Socket services for the FM Frontend. It uses the [Sails](http://sailsjs.org) framework.
 
 ## Developing
 
@@ -15,12 +15,12 @@ Ensure you have the following tools before you start developing this application
 A few pre-configured environments are provided to ease development.
 
 ####`production`
-Defaults to use the public address for the production FM API, can be configured through [ENV variables](#environment-variables).
+Defaults to use the public address for the production FM API, it can also be configured through [ENV variables](#environment-variables).
 
 `sails lift --prod` or `NODE_ENV=production sails lift`
 
 ####`development`
-Isolated envrionment using a local mock database for serving mock data to the FE.
+Isolated envrionment using a local mock database (sails-disk) for serving mock data to the FE.
 
 `sails lift`
 
@@ -39,11 +39,19 @@ Pre-configured to access services running on `localdocker` eg. http://localdocke
 
 The FM Frontend API is designed to be run under docker. This section will describe how to get the application up and running under docker.
 
-#### Building the Docker Image
-
 Once you have docker running the first thing to do is pull the docker image.
 
     $ docker pull registry.soon.build/fm/febe
+
+#### Building the Docker Image
+
+To build the image locally run:
+
+    $ docker build -t registry.soon.build/fm/febe
+
+To build a version with the FE included run:
+
+    $ docker build -f Dockerfile.fe -t registry.soon.build/fm/febe:with-fe
 
 #### Running the Application
 
@@ -58,7 +66,7 @@ Docker Compose defines all the services that make up the app in docker-compose.y
 
     $ docker-compose up
 
-To attach your local code for development, un-comment the relevant application volumes in docker-compose.yml.
+To attach your local API code for development, un-comment the relevant application volumes in docker-compose.yml.
 
 Check it out at [http://localdocker:1337](http://localdocker:1337)
 
@@ -84,11 +92,11 @@ Clone this repository, cd into the project directory and run:
     $ npm start
 
 #### Running in Development
+To run the server with auto restarts on changes to source files use forever with `-w`:
 
     $ forever -w start app.js
 
 Check it out at [http://localhost:1337](http://localhost:1337)
-The server will restart automatically with changes to the source files.
 
 ## Testing
 
