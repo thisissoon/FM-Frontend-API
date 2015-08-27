@@ -23,7 +23,7 @@ ADD package.json /app/package.json
 RUN npm install --production
 
 # Bundle API source
-ADD . /app
+COPY . /app
 
 EXPOSE  1337
 CMD ["npm", "start"]
