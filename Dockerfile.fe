@@ -1,0 +1,24 @@
+#
+# FM-Frontend-API Docker File
+# Builds a docker image to run the FM Frontend Backend service, with FE serving
+#
+
+FROM registry.soon.build/fm/febe:latest
+
+# Install global npm dependencies
+RUN npm install -g \
+    bower
+
+# Install FE and copy build to public
+WORKDIR /app/assets
+RUN npm install --production && \
+    bower install --production --allow-root && \
+    grunt build --env frontend-api && \
+    mkdir -p /app/.tmp/public && \
+    cp -r dist/* /app/.tmp/public/ && \
+    rm -rf `find . -type f | grep -v '.*\/dist\/.*'`
+
+WORKDIR /app
+
+EXPOSE  1337
+CMD ["npm", "start"]
