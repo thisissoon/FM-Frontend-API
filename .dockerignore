@@ -1,0 +1,8 @@
+.git
+.tmp
+node_modules/*
+assets/app/components/*
+assets/node_modules/*
+assets/dist
+.grunt
+coverage

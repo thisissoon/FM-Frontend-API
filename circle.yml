@@ -1,0 +1,55 @@
+#
+# CircleCI Configuration
+#
+
+# Machine Settings
+
+machine:
+  services:
+    - docker
+  environment:
+    REPO: registry.soon.build/fm/febe
+    TAG: $(sed 's/master/latest/;s/\//\-/' <<<$CIRCLE_BRANCH)
+
+# Sync FE submodule
+
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init
+
+# Dependencies
+
+dependencies:
+  pre:
+    - sed "s/<DOCKER_REGISTRY>/$DOCKER_REGISTRY/;s/<DOCKER_AUTH>/$DOCKER_AUTH/" < .docker.config.json > ~/.dockercfg
+  override:
+    - docker build -t $REPO:$TAG .
+
+# Test
+
+test:
+  override:
+    - docker run -it --name test --net=host -e CIRCLE_BRANCH=$CIRCLE_BRANCH $REPO:$TAG grunt test
+
+# Deployment
+
+deployment:
+  prod:
+    branch: master
+    commands:
+      - docker tag $REPO:$TAG $REPO:prod
+      - docker push $REPO:prod
+  qa:
+    branch: /release\/.*/
+    commands:
+      - docker tag $REPO:$TAG $REPO:qa
+      - docker push $REPO:qa
+  latest:
+    branch: develop
+    commands:
+      - docker tag $REPO:$TAG $REPO:latest
+      - docker push $REPO:latest
+      - docker build -f Dockerfile.fe -t $REPO:with-fe .
+      - docker push $REPO:with-fe
+
