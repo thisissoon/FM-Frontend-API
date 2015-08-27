@@ -51,4 +51,6 @@ deployment:
     commands:
       - docker tag $REPO:$TAG $REPO:latest
       - docker push $REPO:latest
+      - docker build -f Dockerfile.fe -t $REPO:with-fe .
+      - docker push $REPO:with-fe
 
