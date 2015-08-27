@@ -22,7 +22,6 @@ checkout:
 
 dependencies:
   pre:
-    - docker pull node:slim
     - sed "s/<DOCKER_REGISTRY>/$DOCKER_REGISTRY/;s/<DOCKER_AUTH>/$DOCKER_AUTH/" < .docker.config.json > ~/.dockercfg
   override:
     - docker build -t $REPO:$TAG .
