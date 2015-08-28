@@ -1,4 +1,10 @@
 /**
+ * Module dependencies
+ */
+var sailsRestConfig = require('./sailsRest'),
+    defaultHooks = require('sails-rest/lib/hooks');
+
+/**
  * Connections
  * (sails.config.connections)
  *
@@ -35,7 +41,12 @@ module.exports.connections = {
   fm: {
     adapter: 'sails-rest',
     host: process.env.FM_API_URI,
-    protocol: 'http'
+    protocol: 'http',
+    hooks: {
+      merge: false,
+      before: [defaultHooks.before[0], sailsRestConfig.createEndpoint],
+      after: [defaultHooks.after[0]]
+    }
   },
 
   /**
