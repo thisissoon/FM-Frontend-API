@@ -53,7 +53,9 @@ module.exports.routes = {
   'GET /api/player/mute':       { model: 'player/mute',       blueprint: 'findasobject' },
   'GET /api/player/volume':     { model: 'player/volume',     blueprint: 'findasobject' },
   'GET /api/player/queue/meta': { model: 'player/queue/meta', blueprint: 'findasobject' },
-  'GET /api/player/stats':      { model: 'player/stats', blueprint: 'findasobject' }
+  'GET /api/player/stats':      { model: 'player/stats', blueprint: 'findasobject' },
+
+  'POST /api/events':           'EventController.post'
 
 
 };
