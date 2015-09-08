@@ -42,7 +42,6 @@ module.exports = {
       default:
         sails.log.debug('Invalid event: ' + req.body._event);
         return res.badRequest({ _errors: { _event: 'Event \'' + req.body._event + '\' is invalid.' }});
-        break;
     }
 
     return res.status(202).json({ message: 'All is well. The event will be passed on to FE socket subscribers.' });
