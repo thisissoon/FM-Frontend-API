@@ -37,7 +37,8 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "forever --minUptime 1000 --spinSleepTime 1000 app.js --prod"
+    "start": "forever --minUptime 1000 --spinSleepTime 1000 app.js --prod",
+    "test": "grunt test"
   },
   "main": "app.js",
   "repository": {
