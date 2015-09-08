@@ -4,4 +4,9 @@ module.exports = function (grunt) {
       'mocha_istanbul:unit',
       'mocha_istanbul:integration'
 	]);
+
+  grunt.registerTask('test:dev', [
+      'watch:api'
+	]);
+
 };
