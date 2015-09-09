@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         nospawn: false,
         livereload: true
       },
-      files: ['api/**/*', 'config/**/*'],
+      files: ['api/**/*', 'config/**/*', 'tests/**/*'],
       tasks: ['test']
     }
 	});
