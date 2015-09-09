@@ -27,7 +27,15 @@ module.exports = function(grunt) {
 
 			// When assets are changed:
 			tasks: ['syncAssets' , 'linkAssets']
-		}
+		},
+    api: {
+      options: {
+        nospawn: false,
+        livereload: true
+      },
+      files: ['api/**/*', 'config/**/*'],
+      tasks: ['test']
+    }
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-watch');

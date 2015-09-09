@@ -1,0 +1,14 @@
+#
+# FM-Frontend-API DockerFile for testing
+# Builds a docker image to run the FM Frontend Backend service with testing depdencies
+#
+
+FROM registry.soon.build/fm/febe:latest
+
+# Install API testing dependencies
+WORKDIR /app
+ADD package.json /app/package.json
+RUN npm install
+
+EXPOSE  1337
+CMD ["npm", "test"]
