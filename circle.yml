@@ -25,6 +25,7 @@ dependencies:
     - sed "s/<DOCKER_REGISTRY>/$DOCKER_REGISTRY/;s/<DOCKER_AUTH>/$DOCKER_AUTH/" < .docker.config.json > ~/.dockercfg
   override:
     - docker build -t $REPO:$TAG .
+    - docker tag $REPO:$TAG $REPO:latest
     - docker build -f Dockerfile.testing -t $REPO:testing .
 
 # Test
