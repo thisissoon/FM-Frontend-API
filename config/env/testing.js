@@ -6,6 +6,9 @@ module.exports = {
 
   environment: 'testing',
 
+  // Use alternative port to avoid clash with running app
+  port: 1338,
+
   hooks: {
       grunt: false
   },

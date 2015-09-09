@@ -55,6 +55,8 @@ module.exports.routes = {
   'GET /api/player/queue/meta': { model: 'player/queue/meta', blueprint: 'findasobject' },
   'GET /api/player/stats':      { model: 'player/stats', blueprint: 'findasobject' },
 
-  'GET /api/users/:id/stats':   { model: 'usersstats', blueprint: 'find' }
+  'GET /api/users/:id/stats':   { model: 'usersstats', blueprint: 'find' },
+
+  'POST /api/events':           'EventController.post'
 
 };
