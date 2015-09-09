@@ -11,6 +11,7 @@
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-jshint": "^0.11.2",
     "lodash": "^3.10.1",
+    "path-to-regexp": "^1.2.1",
     "prerender-node": "^2.0.2",
     "redis": "^0.12.1",
     "sails": "~0.11.0",
@@ -24,13 +25,21 @@
     "grunt-contrib-less": "0.11.1",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.5.3",
+    "grunt-mocha-istanbul": "^3.0.1",
     "grunt-sails-linker": "~0.9.5",
     "grunt-sync": "~0.0.4",
-    "sails-disk": "~0.10.0"
+    "istanbul": "^0.3.19",
+    "mocha": "^2.3.2",
+    "sails-disk": "~0.10.0",
+    "sinon": "^1.16.1",
+    "sinon-chai": "^2.8.0",
+    "supertest": "^1.1.0",
+    "xunit-file": "0.0.7"
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "forever --minUptime 1000 --spinSleepTime 1000 app.js --prod"
+    "start": "forever --minUptime 1000 --spinSleepTime 1000 app.js --prod",
+    "test": "grunt test"
   },
   "main": "app.js",
   "repository": {

@@ -1,5 +1,11 @@
 module.exports = function (grunt) {
 	grunt.registerTask('test', [
-      'jshint'
+      'jshint',
+      'mocha_istanbul:all'
 	]);
+
+    grunt.registerTask('test:dev', [
+      'watch:api'
+	]);
+
 };

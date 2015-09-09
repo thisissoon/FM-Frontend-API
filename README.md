@@ -100,7 +100,24 @@ Check it out at [http://localhost:1337](http://localhost:1337)
 
 ## Testing
 
-TODO
+Our test suites use the [Mocha](http://mochajs.org/) framework with the following tools:
+- [Chai](http://chaijs.com/) assertion library
+- [Sinon.JS](http://sinonjs.org/) for spies, stubs and mocks
+- [SuperTest](https://www.npmjs.com/package/supertest) for HTTP assertions
+
+### Assertions with Chai
+Chai has several interfaces, we use the chain-capable BDD style with expect syntax. For more information see the [Chai API documentation](http://chaijs.com/api/bdd/). We're also making use of the [Sinon-Chai plugin](http://chaijs.com/plugins/sinon-chai) to provide custom assertions for Sinon.JS.
+
+### Test Commands
+
+We use grunt to orchestrate the testing tasks. The test suite can be run using either of the following commands:
+
+    $ npm test
+    $ grunt test
+
+To run the test suite with auto-reruns on code changes, run:
+
+    $ grunt test:dev
 
 ## Documentation
 
