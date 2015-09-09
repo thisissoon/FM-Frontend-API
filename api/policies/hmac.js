@@ -2,8 +2,7 @@
 /**
  * Module dependencies
  */
-var crypto = require('crypto'),
-    clients = sails.config.clients;
+var crypto = require('crypto');
 
 /**
  * HMAC Verification
@@ -13,6 +12,12 @@ var crypto = require('crypto'),
  *
  */
 module.exports = function(req, res, next) {
+
+  /**
+   * Collection of trusted clients from config
+   * @property {Object} clients
+   */
+  var clients = sails.config.clients;
 
   /**
    * @property {Object} errResponse
@@ -52,7 +57,7 @@ module.exports = function(req, res, next) {
    * Create signature from encoding request body with secret key, for comparison
    * @property {String} signature
    */
-  var signature = crypto.createHmac('sha256', key).update(new Buffer(req.body)).digest('base64');
+  var signature = crypto.createHmac('sha256', key).update(req.body.toString()).digest('base64');
 
   // Verify provided signature against computed
   if (clientSignature !== signature) {
